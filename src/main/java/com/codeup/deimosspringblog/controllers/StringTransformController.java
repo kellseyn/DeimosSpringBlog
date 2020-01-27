@@ -35,8 +35,18 @@ public class StringTransformController {
     @GetMapping("/string/{string}")
     @ResponseBody
 
-    public String strang(@RequestParam String string){
+    public String strang(@PathVariable String string,
+                        @RequestParam(required = false) boolean reverse,
+                         @RequestParam(required = false) boolean caps) {
 
-        return string;
+        if(caps == true && reverse == true){
+        return upperCased(reversed(string));
+        } else if (caps == true) {
+            return upperCased(string);
+        }else if(reverse == true){
+            return reversed(string);
+        } else{
+            return string;
+        }
     }
 }

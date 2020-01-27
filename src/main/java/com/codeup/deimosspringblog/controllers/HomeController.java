@@ -1,17 +1,18 @@
 package com.codeup.deimosspringblog.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
-    @ResponseBody
+    @GetMapping("/home/{user}")
+    public String homePage(@PathVariable String user, Model model){
 
-    public String home(){
-        return "This is the landing page";
+        model.addAttribute("user", user);
+        return "home";
     }
 
 }
