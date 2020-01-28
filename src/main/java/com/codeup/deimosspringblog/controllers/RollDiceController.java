@@ -18,12 +18,12 @@ public class RollDiceController {
 
         int random = (int) (Math.random() * 6) + 1;
 
-        model.addAttribute("number", "You guessed " + number + "!");
-        model.addAttribute("random", "The computer rolled a " + random + "!");
+        model.addAttribute("number", "You guessed " + number);
+        model.addAttribute("random", "The computer rolled a " + random);
         if (number == random){
-            model.addAttribute("win", "You win! Play again!");
+            model.addAttribute("win", "You won, play again!");
         } else{
-            model.addAttribute("lose", "You lose! Play again!");
+            model.addAttribute("lose", "You lost, play again..");
         }
         return "roll-dice";
     }

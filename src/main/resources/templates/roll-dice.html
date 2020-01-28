@@ -9,13 +9,14 @@
 
 
 <form action="/roll-dice" method="post">
-    <h3>Guess a number between 1 and 6:</h3>
+    <h1>Pick a number between 1 and 6:</h1>
+
+    <input type="number" name="number" min="1" max="6">
+    <button type="submit">Roll Dice</button>
     <h1 th:text="${number}"></h1>
     <h1 th:text="${random}"></h1>
     <h1 th:text="${win}"></h1>
     <h1 th:text="${lose}"></h1>
-    <input type="number" name="number" min="1" max="6">
-    <button type="submit">Roll Dice</button>
 </form>
 
 </body>
