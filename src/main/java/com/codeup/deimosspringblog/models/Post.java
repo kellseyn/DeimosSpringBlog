@@ -3,13 +3,14 @@ package com.codeup.deimosspringblog.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "posts")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(columnDefinition = "VARCHAR(100) NOT NULL")
     private String title;
-    @Column(columnDefinition = "VARCHAR(300) NOT NULL")
+    @Column(columnDefinition = "TEXT NOT NULL")
     private String body;
 
 
