@@ -11,5 +11,7 @@ public interface AdRepository extends JpaRepository <Post, String> {
 
     Post findByTitle(String title);
 
+    Post getFirstByTitle(String title);
+
 
 }

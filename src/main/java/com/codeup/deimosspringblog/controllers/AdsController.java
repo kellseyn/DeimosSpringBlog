@@ -33,4 +33,9 @@ public class AdsController {
     public Post byTitle(){
         return adsDao.findByTitle("k");
     }
+
+    @GetMapping("/ads/firstbytitle")
+    public String firstTitle(){
+        return "test";
+    }
 }
