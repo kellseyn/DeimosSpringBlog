@@ -1,22 +1,29 @@
 package com.codeup.deimosspringblog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
 public class Post {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(columnDefinition = "VARCHAR(100) NOT NULL")
+
+    @Column(nullable = false)
     private String title;
-    @Column(columnDefinition = "TEXT NOT NULL")
+
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
+    @OneToOne
+    private PostDetails postDetails;
 
-
-    public Post(){
-
+//    @OneToMany
+    private PostImage postImage;
+    public List<PostImage> images;
+    public Post() {
     }
 
     public Post(long id, String title, String body){
@@ -24,16 +31,6 @@ public class Post {
         this.title = title;
         this.body = body;
     }
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getTitle(){
         return this.title;
     }
@@ -48,5 +45,29 @@ public class Post {
 
     public void setBody(String newBody){
         this.body = newBody;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public PostDetails getPostDetails() {
+        return postDetails;
+    }
+
+    public void setPostDetails(PostDetails postDetails) {
+        this.postDetails = postDetails;
+    }
+
+    public PostImage getPostImage() {
+        return postImage;
+    }
+
+    public void setPostImage(PostImage postImage) {
+        this.postImage = postImage;
     }
 }
