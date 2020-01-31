@@ -20,10 +20,22 @@ public class Post {
     @OneToOne
     private PostDetails postDetails;
 
-//    @OneToMany
-    private PostImage postImage;
-    public List<PostImage> images;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
+
+//    private PostImage postImage;
+//    public List<PostImage> images;
+
+
     public Post() {
+    }
+
+    public Post(String title, String body) {
+        this.title = title;
+        this.body = body;
     }
 
     public Post(long id, String title, String body){
@@ -39,12 +51,12 @@ public class Post {
         return this.body;
     }
 
-    public void setTitle(String newTitle){
-        this.title = newTitle;
+    public void setTitle(String title){
+        this.title = title;
     }
 
-    public void setBody(String newBody){
-        this.body = newBody;
+    public void setBody(String body){
+        this.body = body;
     }
 
     public long getId() {
@@ -63,11 +75,20 @@ public class Post {
         this.postDetails = postDetails;
     }
 
-    public PostImage getPostImage() {
-        return postImage;
+    public User getUser() {
+        return user;
     }
 
-    public void setPostImage(PostImage postImage) {
-        this.postImage = postImage;
+    public void setUser(User user) {
+        this.user = user;
     }
+
+
+//    public PostImage getPostImage() {
+//        return postImage;
+//    }
+//
+//    public void setPostImage(PostImage postImage) {
+//        this.postImage = postImage;
+//    }
 }

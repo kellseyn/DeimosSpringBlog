@@ -1,6 +1,7 @@
 package com.codeup.deimosspringblog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -14,6 +15,17 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Post> posts;
+
+    public User(){
+
+    }
+
+
+    //    @ManyToMany(mappedBy = "posts")
+//    private List<User> users;
 
     public long getId() {
         return id;
@@ -53,5 +65,13 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }
