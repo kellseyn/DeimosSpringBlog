@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Email;
 import java.util.ArrayList;
 
 @Controller
@@ -18,13 +19,15 @@ public class PostController {
 
     private PostRepository postDao;
     private UserRepository userDao;
+    private EmailService emailService;
 
-    public PostController(PostRepository postDao, UserRepository userDao) {
-
+    public PostController(PostRepository postDao,
+                          UserRepository userDao,
+                          EmailService emailService) {
         this.postDao = postDao;
         this.userDao = userDao;
+        this.emailService = emailService;
     }
-
 
     @GetMapping("/posts")
     public String postsIndex(Model model) {
@@ -62,24 +65,6 @@ public class PostController {
         return "posts/show";
     }
 
-//    @GetMapping("/posts/create")
-//
-//    public String createPostForm(Model model) {
-//        model.addAttribute("post", new Post());
-//        return "posts/create";
-//
-//    }
-//
-//    @PostMapping("/posts/create")
-//    public String submitPost(@ModelAttribute Post post) {
-//
-//        User user = userDao.getOne(1L);
-//        System.out.println(user.getUsername());
-//        post.setUser(user);
-//        postDao.save(post);
-//
-//        return "redirect:/posts";
-//    }
 
     @GetMapping("/posts/create")
     public String createPostForm(Model model) {
@@ -90,6 +75,7 @@ public class PostController {
     public String createPost(@ModelAttribute Post post) {
         User u = userDao.getOne(1L);
         post.setUser(u);
+        emailService.prepareAndSend(post, "HI there", "This is the test");
         postDao.save(post);
         return "redirect:/posts";
     }
