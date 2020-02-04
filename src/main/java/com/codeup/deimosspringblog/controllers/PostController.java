@@ -1,7 +1,7 @@
 package com.codeup.deimosspringblog.controllers;
 
 //import com.codeup.deimosspringblog.models.Ad;
-
+import com.codeup.deimosspringblog.models.User;
 import com.codeup.deimosspringblog.models.Post;
 import com.codeup.deimosspringblog.models.PostDetails;
 import com.codeup.deimosspringblog.models.User;

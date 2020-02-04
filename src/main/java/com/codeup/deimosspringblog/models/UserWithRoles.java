@@ -7,40 +7,40 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 
-@Entity
-@Table(name = "user_roles")
+//@Entity
+//@Table(name = "user_roles")
 public class UserWithRoles extends User implements UserDetails {
 
     public UserWithRoles(User user) {
         super(user);  // Call the copy constructor defined in User
     }
-
-
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private long id;
-
-        @Column(name = "user_id")
-        private long userId;
-
-        @Column(name = "role")
-        private String role;
-
-        public long getUserId() {
-            return userId;
-        }
-
-        public void setUserId(long userId) {
-            this.userId = userId;
-        }
-
-        public String getRole() {
-            return role;
-        }
-
-        public void setRole(String role) {
-            this.role = role;
-        }
+//
+//
+//        @Id
+//        @GeneratedValue(strategy = GenerationType.IDENTITY)
+//        private long id;
+//
+////        @Column(name = "user_id")
+//        private long userId;
+//
+////        @Column(name = "role")
+//        private String role;
+//
+//        public long getUserId() {
+//            return userId;
+//        }
+//
+//        public void setUserId(long userId) {
+//            this.userId = userId;
+//        }
+//
+//        public String getRole() {
+//            return role;
+//        }
+//
+//        public void setRole(String role) {
+//            this.role = role;
+//        }
 
 
     @Override

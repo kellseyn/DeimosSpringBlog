@@ -6,13 +6,16 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(nullable = false, name = "id")
     private long id;
     @Column(nullable = false, length = 25)
     private String username;
     @Column(nullable = false, length = 50)
     private String email;
+
     @Column(nullable = false)
     private String password;
 
@@ -28,6 +31,22 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
+    }
+
+    public User(String username, String email, String password) {
+
+
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(long id, String username, String email, String password, List<Post> posts) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.posts = posts;
     }
 
 
@@ -66,13 +85,6 @@ public class User {
         this.password = password;
     }
 
-    public User(long id, String username, String email, String password) {
-
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
 
     public List<Post> getPosts() {
         return posts;
